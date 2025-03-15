@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from dwave.system.samplers import DWaveSampler
+from neal import SimulatedAnnealingSampler
 from dwave.system.composites import EmbeddingComposite
 import re
 
@@ -30,7 +30,7 @@ m = Maze(n_rows, n_cols, start, end, walls)
 bqm = m.get_bqm()
 
 # Submit BQM to a D-Wave sampler
-sampler = EmbeddingComposite(DWaveSampler())
+sampler = SimulatedAnnealingSampler()
 result = sampler.sample(bqm,
                         num_reads=1000,
                         chain_strength=2,
